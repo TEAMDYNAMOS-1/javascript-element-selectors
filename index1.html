@@ -2,35 +2,37 @@
 <html>
 <head>
     <title>JavaScript Element Selectors</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .highlight { background-color: yellow; }
+        .bold { font-weight: bold; }
+    </style>
 </head>
 <body>
     <h1 id="heading">Hello World</h1>
     <p class="paragraph">This is a paragraph.</p>
     <p class="paragraph">This is another paragraph.</p>
-    <button>Click Me</button>
+    <button id="btn">Click Me</button>
 
     <script>
-        // 1️⃣ Select element by ID
-        let heading = document.getElementById("heading");
+        // Select element by ID
+        const heading = document.querySelector("#heading");
         heading.style.color = "red";
 
-        // 2️⃣ Select elements by class
-        let paragraphs = document.getElementsByClassName("paragraph");
-        for (let p of paragraphs) {
-            p.style.fontWeight = "bold";
-        }
+        // Select elements by class
+        const paragraphs = document.querySelectorAll(".paragraph");
+        paragraphs.forEach(p => {
+            p.classList.add("bold");
+        });
 
-        // 3️⃣ Select elements by tag name
-        let buttons = document.getElementsByTagName("button");
-        buttons[0].style.backgroundColor = "lightblue";
+        // Select element by tag
+        const button = document.querySelector("button");
+        button.style.backgroundColor = "lightblue";
 
-        // 4️⃣ Select element using querySelector (first match)
-        let firstParagraph = document.querySelector(".paragraph");
-        firstParagraph.style.fontSize = "20px";
-
-        // 5️⃣ Select all matching elements using querySelectorAll
-        let allParagraphs = document.querySelectorAll(".paragraph");
-        allParagraphs.forEach(p => p.style.border = "1px solid gray");
+        // Event example: highlight all paragraphs on button click
+        button.addEventListener("click", () => {
+            paragraphs.forEach(p => p.classList.toggle("highlight"));
+        });
     </script>
 </body>
 </html>
